@@ -16,12 +16,14 @@ Installation / Usage
 To install use pip:
 
 .. code:: bash
+
     pip3 install xontrib-add-variable
 
 
 Add on `~/.xonshrc`
 
 .. code:: python
+
     xontrib load add_variable
 
 Contributing
