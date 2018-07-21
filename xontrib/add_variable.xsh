@@ -10,7 +10,7 @@ __version__ = '0.1.0'
 def import_module_add_variable():
     xonsh_dir = os.path.expanduser("~")+"/.xonsh"
     sys.path.append(xonsh_dir)
-    module = "add_variables"
+    module = "add_variable"
     return __import__(module)
 
 
