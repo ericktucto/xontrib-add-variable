@@ -63,7 +63,7 @@ Credits
 
 This package was created with Cookiecutter_ and the xontrib_ template
 
-.. |Terminal| image:: docs/terminal.png
+.. |Terminal| image:: https://raw.githubusercontent.com/ErickTucto/xontrib-add-variable/master/docs/terminal.png
     :width: 600px
     :alt: terminal.png
 
