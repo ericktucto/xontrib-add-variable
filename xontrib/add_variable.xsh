@@ -1,9 +1,9 @@
 import sys
 import os
 from inspect import isfunction
+import importlib
 
-
-__all__ = ()
+__all__ = ['variable', 'alias']
 __version__ = '0.1.0'
 
 XONSH_DIR = os.path.expanduser("~") + "/.xonsh"
@@ -19,7 +19,7 @@ def decorator(dec):
 
 
 @decorator
-def aliases(func):
+def alias(func):
     aliases[func.__name__] = func
     return func
 
@@ -32,15 +32,14 @@ def variable(func):
 
 def import_module_add_variable():
     sys.path.append(XONSH_DIR)
-    module = "add_variable"
-    return __import__(module)
+    return importlib.import_module('add_variable')
 
 
-def add_methods_on_PROMPTFIELDS():
-    add_variables = import_module_add_variable()
-    for function in dir(add_variables):
-        if isfunction(getattr(add_variables, function)):
-            $PROMPT_FIELDS[function] = getattr(add_variables, function)
+def run():
+    add_variable = import_module_add_variable()
+    for function in dir(add_variable):
+        if isfunction(getattr(add_variable, function)):
+            getattr(add_variable, function)
 
-
-add_methods_on_PROMPTFIELDS()
+if __name__ == "xontrib.add_variable":
+    run()
