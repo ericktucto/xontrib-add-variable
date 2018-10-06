@@ -4,7 +4,7 @@ from inspect import isfunction
 import importlib
 
 __all__ = ['variable', 'alias']
-__version__ = '0.1.0'
+__version__ = '1.0.1'
 
 XONSH_DIR = os.path.expanduser("~") + "/.xonsh"
 
@@ -31,15 +31,13 @@ def variable(func):
 
 
 def import_module_add_variable():
+    """
+    Import and return ~/.xonsh/add_variable.xsh Module
+    """
     sys.path.append(XONSH_DIR)
     return importlib.import_module('add_variable')
 
 
-def run():
-    add_variable = import_module_add_variable()
-    for function in dir(add_variable):
-        if isfunction(getattr(add_variable, function)):
-            getattr(add_variable, function)
-
 if __name__ == "xontrib.add_variable":
-    run()
+    # Generate: Filter each attribute and extract only the functions
+    [func for func in dir(import_module_add_variable()) if isfunction(func)]
