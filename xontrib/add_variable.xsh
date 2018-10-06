@@ -9,6 +9,27 @@ __version__ = '0.1.0'
 XONSH_DIR = os.path.expanduser("~") + "/.xonsh"
 
 
+def decorator(dec):
+    def wrapper(func):
+        g = dec(func)
+        g.__decorator__ = dec.__name__
+        return g
+    wrapper.name = dec.__name__
+    return wrapper
+
+
+@decorator
+def aliases(func):
+    aliases[func.__name__] = func
+    return func
+
+
+@decorator
+def variable(func):
+    $PROMPT_FIELDS[func.__name__] = func
+    return func
+
+
 def import_module_add_variable():
     sys.path.append(XONSH_DIR)
     module = "add_variable"
