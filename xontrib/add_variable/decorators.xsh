@@ -1,19 +1,20 @@
-def decorator(dec):
-    def wrapper(func):
-        g = dec(func)
-        g.__decorator__ = dec.__name__
-        return g
-    wrapper.name = dec.__name__
-    return wrapper
+class alias():
+    def __init__(self, name):
+        if callable(name):
+            aliases[name.__name__] = name
+        else:
+            self.name = name
+
+    def __call__(self, func):
+        aliases[self.name] = func
 
 
-@decorator
-def alias(func):
-    aliases[func.__name__] = func
-    return func
+class variable():
+    def __init__(self, name):
+        if callable(name):
+            $PROMPT_FIELDS[name.__name__] = name
+        else:
+            self.name = name
 
-
-@decorator
-def variable(func):
-    $PROMPT_FIELDS[func.__name__] = func
-    return func
+    def __call__(self, func):
+        $PROMPT_FIELDS[func.__name__] = func
