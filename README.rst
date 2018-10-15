@@ -2,14 +2,15 @@
 Xontrib Add Variable
 *********************
 
-Version number: 0.1.0
+Version number: 1.1.0
 
 Author: `Erick Tucto`_
 
 Overview
 ########
 
-This package allow add new variable.
+This package allow add new variable to ``$PROMPT_FIELDS`` and
+create new aliases.
 
 Installation / Usage
 ####################
@@ -18,7 +19,11 @@ Installation / Usage
 
 .. code-block:: bash
 
-    pip3 install xontrib-add-variable
+    xpip install xontrib-add-variable
+
+.. attention::
+    If you hadn't created ``~/.xonsh/add_variable.xsh``, the extension
+    don't work (`issue#1`_)
 
 2. Add on ``~/.xonshrc``
 
@@ -30,7 +35,7 @@ Installation / Usage
 Contributing
 ############
 
-TBD
+1. `Erick Tucto`_
 
 Example
 #######
@@ -41,7 +46,9 @@ Example
     :number-lines:
 
     from time import strftime
+    from xontrib.add_variable.decorators import variable
 
+    @variable
     def timeNow():
         return strftime('%H:%M:%S')
 
@@ -53,6 +60,9 @@ Example
     xontrib load add_variable
 
     $RIGHT_PROMPT = '{timeNow}'
+
+.. tip::
+    Please, read my `wiki`_
 
 3. See image
 
@@ -68,5 +78,7 @@ This package was created with Cookiecutter_ and the xontrib_ template
     :alt: terminal.png
 
 .. _`Erick Tucto`: https://github.com/ErickTucto
+.. _`issue#1`: https://github.com/ErickTucto/xontrib-add-variable/issues/1
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _xontrib: https://github.com/laerus/cookiecutter-xontrib
+.. _wiki: https://github.com/ErickTucto/xontrib-add-variable/wiki
