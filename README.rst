@@ -2,7 +2,7 @@
 Xontrib Add Variable
 *********************
 
-Version number: 1.1.0
+Version number: 1.1.1
 
 Author: `Erick Tucto`_
 
@@ -19,7 +19,7 @@ Installation / Usage
 
 .. code-block:: bash
 
-    xpip install xontrib-add-variable
+    pip install xontrib-add-variable
 
 .. attention::
     If you hadn't created ``~/.xonsh/add_variable.xsh``, the extension
