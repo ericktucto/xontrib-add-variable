@@ -7,7 +7,7 @@ with open(join(_here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='xontrib-add-variable',
-    version='1.1.1',
+    version='1.2.0',
 
     url='https://github.com/ErickTucto/xontrib-add-variable',
     description='This package allow add new variable.',

@@ -21,11 +21,10 @@ Installation / Usage
 
     pip install xontrib-add-variable
 
-.. attention::
-    If you hadn't created ``~/.xonsh/add_variable.xsh``, the extension
-    don't work (`issue#1`_)
-
 2. Add on ``~/.xonshrc``
+
+Now you can create new variables to $PROMPT on ``~/.xonsh/add_variable.xsh``,
+also create new aliases, please see `Example`_ or my `wiki`_
 
 .. code:: python
     :number-lines:
@@ -60,9 +59,6 @@ Example
     xontrib load add_variable
 
     $RIGHT_PROMPT = '{timeNow}'
-
-.. tip::
-    Please, read my `wiki`_
 
 3. See image
 

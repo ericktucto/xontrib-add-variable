@@ -1,12 +1,12 @@
 import sys
-import os
+from os.path import expanduser, isfile
 import importlib
 from inspect import isfunction
 
 __all__ = ()
-__version__ = '1.1.0'
+__version__ = '1.2.0'
 
-XONSH_DIR = os.path.expanduser("~") + "/.xonsh"
+XONSH_DIR = expanduser("~") + "/.xonsh"
 
 
 def import_module_add_variable():
@@ -27,4 +27,8 @@ def data_add_variable():
 
 if __name__ == "xontrib.add_variable":
     # Generate: Filter each attribute and extract only the functions
-    [function for function in data_add_variable() if isfunction(function)]
+    if (isfile(XONSH_DIR + '/add_variable.xsh')):
+        [function for function in data_add_variable() if isfunction(function)]
+    else:
+        print("%s/add_variable.xsh doesn't exist, please create it." %
+              XONSH_DIR)
